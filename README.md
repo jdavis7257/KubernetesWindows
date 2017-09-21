@@ -6,7 +6,7 @@
 
 ### Let's Go!
 
-1.  From the root of the git repo cloned above. Run `vagrant up`
+1.  From the root of the git repo cloned above. Run `vagrant up`. Note: Sometimes Vagrant will fail when trying to inject ssl keys. If this happens run `vagrant reload && vagrant up` Most of the time this will fix the issue.
 2.  Once the machines boot and the vagrant command returns you should now have two VMs running. SSH into the master by typing `vagrant ssh master`
 3.  Once you get logged into the VM run `sudo kubeadm init --apiserver-advertise-address 10.0.3.15` if all goes well this will give you a functional kubernetes master listening on 10.0.3.15 which is the internal network between the master and node.
 4.  You now need to setup the kubectl configs with this command `mkdir -p .kube && sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config && sudo chown $(id -u):$(id -g) ~/.kube/config`
